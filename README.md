@@ -7,7 +7,7 @@ Este projeto faz parte do Módulo 3 da Resilia, com o objetivo de modernizar o p
 - [Contexto](#contexto)
 - [Estrutura do Projeto](#estrutura-do-projeto)
 - [Modelagem do Banco de Dados](#modelagem-do-banco-de-dados)
-- [Relacionamentos](#Relacionamentos)
+- [Relacionamentos](#relacionamentos)
 - [Guia do Projeto](#guia-do-projeto)
 - [Licença](#licença)
 - [Status](#status)
@@ -61,13 +61,15 @@ O projeto está estruturado da seguinte forma:
 
 Este projeto é licenciado sob a [Licença MIT](LICENSE).
 
+https://github.com/NewKanvas/PROJETO-INDIVIDUAL-3.git
+
 ## Status
 
-![GitHub Repo Size](https://img.shields.io/github/repo-size/NewKanvas/Projeto3?style=for-the-badge&logo=github)
-![GitHub last commit](https://img.shields.io/github/last-commit/NewKanvas/Projeto3?style=for-the-badge&logo=git)
-[![Licence](https://img.shields.io/github/license/NewKanvas/Projeto3?style=for-the-badge)](./LICENSE)
-![Downloads](https://img.shields.io/github/downloads/NewKanvas/Projeto3/total?style=for-the-badge)
-![Forks](https://img.shields.io/github/forks/NewKanvas/Projeto3?style=for-the-badge)
-![Watchers](https://img.shields.io/github/watchers/NewKanvas/Projeto3?style=for-the-badge)
-![Stars](https://img.shields.io/github/stars/NewKanvas/Projeto3?style=for-the-badge)
-![Issues](https://img.shields.io/github/issues/NewKanvas/Projeto3?style=for-the-badge)
+![GitHub Repo Size](https://img.shields.io/github/repo-size/NewKanvas/PROJETO-INDIVIDUAL-3.?style=for-the-badge&logo=github)
+![GitHub last commit](https://img.shields.io/github/last-commit/NewKanvas/PROJETO-INDIVIDUAL-3.?style=for-the-badge&logo=git)
+[![Licence](https://img.shields.io/github/license/NewKanvas/PROJETO-INDIVIDUAL-3.?style=for-the-badge)](./LICENSE)
+![Downloads](https://img.shields.io/github/downloads/NewKanvas/PROJETO-INDIVIDUAL-3./total?style=for-the-badge)
+![Forks](https://img.shields.io/github/forks/NewKanvas/PROJETO-INDIVIDUAL-3.?style=for-the-badge)
+![Watchers](https://img.shields.io/github/watchers/NewKanvas/PROJETO-INDIVIDUAL-3.?style=for-the-badge)
+![Stars](https://img.shields.io/github/stars/NewKanvas/PROJETO-INDIVIDUAL-3.?style=for-the-badge)
+![Issues](https://img.shields.io/github/issues/NewKanvas/PROJETO-INDIVIDUAL-3.?style=for-the-badge)
