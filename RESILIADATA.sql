@@ -6,7 +6,7 @@ CREATE TABLE empresa
     id_empresa INT PRIMARY KEY AUTO_INCREMENT,  
     nome_empresa VARCHAR(100) NOT NULL,  
     endereco VARCHAR(100) NOT NULL,  
-    telefone VARCHAR(100) NOT NULL
+    telefone VARCHAR(15) NOT NULL
 ); 
 
 CREATE TABLE tecnologias
