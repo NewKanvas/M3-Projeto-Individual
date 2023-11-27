@@ -4,16 +4,16 @@ USE RESILIADATA;
 CREATE TABLE empresa 
 ( 
     id_empresa INT PRIMARY KEY AUTO_INCREMENT,  
-    nome_empresa VARCHAR(255) NOT NULL,  
-    endereco VARCHAR(255) NOT NULL,  
-    telefone VARCHAR(255) NOT NULL
+    nome_empresa VARCHAR(100) NOT NULL,  
+    endereco VARCHAR(100) NOT NULL,  
+    telefone VARCHAR(100) NOT NULL
 ); 
 
 CREATE TABLE tecnologias
 ( 
     id_tecnologias INT PRIMARY KEY AUTO_INCREMENT,  
-    area VARCHAR(255) NOT NULL,  
-    nome_tecnologia VARCHAR(255) NOT NULL
+    area VARCHAR(100) NOT NULL,  
+    nome_tecnologia VARCHAR(100) NOT NULL
 ); 
 
 CREATE TABLE tecnologia_empresa 
@@ -26,8 +26,8 @@ CREATE TABLE tecnologia_empresa
 CREATE TABLE colaborador
 ( 
     id_colaborador INT PRIMARY KEY AUTO_INCREMENT,  
-    nome VARCHAR(255) NOT NULL,  
-    cargo VARCHAR(255) NOT NULL,  
+    nome VARCHAR(100) NOT NULL,  
+    cargo VARCHAR(100) NOT NULL,  
     id_empresa INT NOT NULL 
 ); 
 
