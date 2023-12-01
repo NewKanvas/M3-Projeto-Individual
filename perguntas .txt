@@ -5,43 +5,54 @@
 
 
 1 - Entidades Necessárias:
-empresa, tecnologia, tecnologia_Empresa, colaborador
+empresa, tecnologia, tecnologia_Empresa, colaborador,colaborador_empresa
 
 2 - Principais Campos e Tipos:
 
-    Empresa:
+    empresa:
         id_empresa (INT, PK)
         nome_empresa (VARCHAR(255))
         endereco (VARCHAR(255))
         telefone (VARCHAR(20))
 
-    Tecnologia:
+    tecnologia:
         id_tecnologia (INT, PK)
         area (VARCHAR(50))
         nome_tecnologia (VARCHAR(255))
 
-    Tecnologia_Empresa:
+    tecnologia_Empresa:
         id_empresa (INT, FK referenciando Empresa)
         id_tecnologia (INT, FK referenciando Tecnologia)
         nivel_utilizacao (INT)
 
-    Colaborador:
+    colaborador:
         id_colaborador (INT, PK)
         nome (VARCHAR(255))
         cargo (VARCHAR(50))
         id_empresa (INT, FK referenciando Empresa)
+    
+    colaborador_empresa
+        id_colaborador (INT, FK referenciando colaborador)
+        id_empresa (INT, FK referenciando empresa)
+        data_inicio (DATE)
 
 3 -
-    Relacionamento N:N entre Empresa e Colaborador (uma empresa pode ter vários colaboradores).
-    Relacionamento N:N entre Empresa e Tecnologia através da tabela de associação Tecnologia_Empresa 
-    (uma empresa pode utilizar várias tecnologias, e uma tecnologia pode ser utilizada por várias empresas).
+    - Relacionamento N:N entre empresa e colaborador (uma empresa pode ter vários colaboradores e um colaborador pode ter varias empresas).
+    - Relacionamento N:N entre empresa e tecnologias através da tabela de associação Tecnologia_Empresa (uma empresa pode utilizar várias tecnologias, e uma tecnologia pode ser utilizada por várias empresas).
 
+    Tabela tecnologia_empresa:
+        Chave Estrangeira id_empresa: Referencia a id_empresa na tabela empresa.
+        Chave Estrangeira id_tecnologia: Referencia a id_tecnologia na tabela tecnologia.
+
+    Tabela colaborador_empresa:
+        Chave Estrangeira id_colaborador: Referencia a id_colaborador na tabela colaborador.
+        Chave Estrangeira id_empresa: Referencia a id_empresa na tabela empresa.
 4 - 
 -- Inserir dados na tabela empresa
 INSERT INTO empresa(nome_empresa, endereco, telefone) 
 VALUES 
-('Pepperoni Pizza', '123 Main Street', '555-1234'),
-('Margherita Pizza', '456 Oak Avenue', '555-5678');
+('PinkMello', '123 Main Street', '555-1234'),
+('WebZoom', '456 Oak Avenue', '555-5678');
 
 -- Inserir dados na tabela tecnologias
 INSERT INTO tecnologia(area, nome_tecnologia) 
@@ -54,6 +65,12 @@ INSERT INTO colaborador(nome, cargo, id_empresa)
 VALUES 
 ('John Doe', 'Developer', 1),
 ('Jane Smith', 'Data Scientist', 2);
+
+-- Inserir dados na tabela colaborador_empresa
+INSERT INTO colaborador_empresa(id_colaborador, id_empresa, data_inicio) 
+VALUES 
+(1, 1, '2023-01-01'),
+(2, 2, '2023-01-01');
 
 -- Inserir dados na tabela tecnologia_empresa
 INSERT INTO tecnologia_empresa(id_empresa, id_tecnologia, nivel_utilizacao) 

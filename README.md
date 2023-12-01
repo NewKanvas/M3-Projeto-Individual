@@ -48,7 +48,6 @@ O projeto está estruturado da seguinte forma:
     - nome (VARCHAR(100))
     - cargo (VARCHAR(50))
     
-
 5. colaborador_empresa
     - id_colaborador (INT, FK referenciando colaborador)
     - id_empresa (INT, FK referenciando empresa)
