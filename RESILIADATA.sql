@@ -1,61 +1,102 @@
 CREATE DATABASE RESILIADATA;
 USE RESILIADATA;
 
+DROP DATABASE RESILIADATA;
+
 CREATE TABLE empresa 
 ( 
-    id_empresa INT PRIMARY KEY AUTO_INCREMENT,  
-    nome_empresa VARCHAR(100) NOT NULL,  
-    endereco VARCHAR(100) NOT NULL,  
-    telefone VARCHAR(15) NOT NULL
-); 
+ id_empresa INT PRIMARY KEY AUTO_INCREMENT,  
+ nome_empresa VARCHAR(255) NOT NULL,  
+ endereco VARCHAR(255) NOT NULL,  
+ telefone VARCHAR(20) NOT NULL
+);
 
-CREATE TABLE tecnologias
+CREATE TABLE tecnologia 
 ( 
-    id_tecnologias INT PRIMARY KEY AUTO_INCREMENT,  
-    area VARCHAR(100) NOT NULL,  
-    nome_tecnologia VARCHAR(100) NOT NULL
-); 
+ id_tecnologia INT PRIMARY KEY AUTO_INCREMENT,  
+ area VARCHAR(50) NOT NULL,  
+ nome_tecnologia VARCHAR(50) NOT NULL
+);
 
 CREATE TABLE tecnologia_empresa 
 ( 
-    id_empresa INT NOT NULL,  
-    id_tecnologias INT NOT NULL,  
-    nivel_utilizacao INT NOT NULL  -- 1 a 5 (Sendo 1 pouco usado e 5 muito usado)
+ id_empresa INT,  
+ id_tecnologia INT,  
+ nivel_utilizacao INT NOT NULL  -- 1 a 5 (Sendo 1 pouco usado e 5 muito usado)
 ); 
 
-CREATE TABLE colaborador
+CREATE TABLE colaborador 
 ( 
-    id_colaborador INT PRIMARY KEY AUTO_INCREMENT,  
-    nome VARCHAR(100) NOT NULL,  
-    cargo VARCHAR(100) NOT NULL,  
-    id_empresa INT NOT NULL 
-); 
+ id_colaborador INT PRIMARY KEY AUTO_INCREMENT,  
+ nome VARCHAR(100) NOT NULL,  
+ cargo VARCHAR(50) NOT NULL
+);
 
-ALTER TABLE tecnologia_empresa ADD FOREIGN KEY(id_empresa) REFERENCES empresa (id_empresa);
-ALTER TABLE tecnologia_empresa ADD FOREIGN KEY(id_tecnologias) REFERENCES tecnologias (id_tecnologias);
-ALTER TABLE colaborador ADD FOREIGN KEY(id_empresa) REFERENCES empresa (id_empresa);
+CREATE TABLE colaborador_empresa 
+( 
+ id_colaborador INT,
+ id_empresa INT,
+ data_inicio DATE NOT NULL
+);
+
+-- Adicionando chaves estrangeiras com ALTER TABLE
+
+ALTER TABLE tecnologia_empresa 
+  ADD CONSTRAINT fk_tecnologia_empresa_empresa 
+  FOREIGN KEY (id_empresa) REFERENCES empresa (id_empresa);
+
+ALTER TABLE tecnologia_empresa 
+  ADD CONSTRAINT fk_tecnologia_empresa_tecnologia 
+  FOREIGN KEY (id_tecnologia) REFERENCES tecnologia (id_tecnologia);
+
+ALTER TABLE colaborador_empresa 
+  ADD CONSTRAINT fk_colaborador_empresa_colaborador 
+  FOREIGN KEY (id_colaborador) REFERENCES colaborador (id_colaborador);
+
+ALTER TABLE colaborador_empresa 
+  ADD CONSTRAINT fk_colaborador_empresa_empresa 
+  FOREIGN KEY (id_empresa) REFERENCES empresa (id_empresa);
+
+-- Ver tabelas
+
+SELECT * FROM empresa;
+SELECT * FROM tecnologia;
+SELECT * FROM tecnologia_empresa;
+SELECT * FROM colaborador;
+SELECT * FROM colaborador_empresa;
 
 
--- Inserir dados na tabela empresa
+-- Joins
+SELECT c.nome, e.nome_empresa, ce.data_inicio 
+FROM colaborador c
+INNER JOIN colaborador_empresa ce ON ce.id_colaborador = c.id_colaborador
+INNER JOIN empresa e ON e.id_empresa = ce.id_empresa;
+
+-- Inserir dados nas tabelas empresa e tecnologia
+
 INSERT INTO empresa(nome_empresa, endereco, telefone) 
 VALUES 
 ('PinkMello', '123 Main Street', '555-1234'),
 ('WebZoom', '456 Oak Avenue', '555-5678');
 
--- Inserir dados na tabela tecnologias
-INSERT INTO tecnologias(area, nome_tecnologia) 
+INSERT INTO tecnologia(area, nome_tecnologia) 
 VALUES 
 ('Web Development', 'HTML/CSS'),
 ('Data Science', 'Python');
 
--- Inserir dados na tabela colaborador
-INSERT INTO colaborador(nome, cargo, id_empresa) 
-VALUES 
-('John Doe', 'Developer', 1),
-('Jane Smith', 'Data Scientist', 2);
+-- Inserir dados nas tabelas colaborador, tecnologia_empresa, colaborador_empresa
 
--- Inserir dados na tabela tecnologia_empresa
-INSERT INTO tecnologia_empresa(id_empresa, id_tecnologias, nivel_utilizacao) 
+INSERT INTO colaborador(nome, cargo) 
+VALUES 
+('John Doe', 'Developer'),
+('Jane Smith', 'Data Scientist');
+
+INSERT INTO colaborador_empresa(id_colaborador, id_empresa, data_inicio) 
+VALUES 
+(1, 1, '2023-01-01'),
+(2, 2, '2023-01-01');
+
+INSERT INTO tecnologia_empresa(id_empresa, id_tecnologia, nivel_utilizacao) 
 VALUES 
 (1, 1, 4),
 (1, 2, 3),

@@ -21,21 +21,22 @@ estão utilizando e quem são seus colaboradores.
 O projeto está estruturado da seguinte forma:
 - `RESILIADATA.sql`: Contém o codigo para exução do banco de dados.
 - `perguntas.txt`: Arquivo de texto contendo as respostas das questões.
-- `modelo.png`: Print do modelo proposto
+- `modelo_logico.png`: Print do modelo proposto
+- `modelo_conceitual.png`: Print do modelo proposto
 
 ## Modelagem do Banco de Dados
 ### Entidades
 
 1. empresa
     - id_empresa (INT, PK)
-    - nome_empresa (VARCHAR(100))
-    - endereco (VARCHAR(100))
-    - telefone (VARCHAR(15))
+    - nome_empresa (VARCHAR(255))
+    - endereco (VARCHAR(255))
+    - telefone (VARCHAR(20))
 
 2. tecnologias
     - id_tecnologias (INT, PK)
-    - area (VARCHAR(100))
-    - nome_tecnologia (VARCHAR(100))
+    - area (VARCHAR(50))
+    - nome_tecnologia (VARCHAR(50))
 
 3. tecnologia_empresa
     - id_empresa (INT, FK referenciando empresa)
@@ -45,13 +46,26 @@ O projeto está estruturado da seguinte forma:
 4. colaborador
     - id_colaborador (INT, PK)
     - nome (VARCHAR(100))
-    - cargo (VARCHAR(100))
+    - cargo (VARCHAR(50))
+    
+
+5. colaborador_empresa
+    - id_colaborador (INT, FK referenciando colaborador)
     - id_empresa (INT, FK referenciando empresa)
+    - data_inicio (DATE)
 
 ## Relacionamentos
 
-- Relacionamento 1:N entre empresa e colaborador (uma empresa pode ter vários colaboradores).
-- Relacionamento N:N entre empresa e tecnologias através da tabela de associação Tecnologia_Empresa (uma empresa pode utilizar várias tecnologias, e uma tecnologia pode ser utilizada por várias empresas).
+    - Relacionamento N:N entre empresa e colaborador (uma empresa pode ter vários colaboradores e um colaborador pode ter varias empresas).
+    - Relacionamento N:N entre empresa e tecnologias através da tabela de associação Tecnologia_Empresa (uma empresa pode utilizar várias tecnologias, e uma tecnologia pode ser utilizada por várias empresas).
+
+    Tabela tecnologia_empresa:
+        Chave Estrangeira id_empresa: Referencia a id_empresa na tabela empresa.
+        Chave Estrangeira id_tecnologia: Referencia a id_tecnologia na tabela tecnologia.
+
+    Tabela colaborador_empresa:
+        Chave Estrangeira id_colaborador: Referencia a id_colaborador na tabela colaborador.
+        Chave Estrangeira id_empresa: Referencia a id_empresa na tabela empresa.
 
 
 ## Guia do Projeto
